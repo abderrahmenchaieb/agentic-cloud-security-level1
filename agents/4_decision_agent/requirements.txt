@@ -1,0 +1,3 @@
+# Cœur (corrélation, évaluation, routage) : bibliothèque standard uniquement.
+# Générateur d'actions avec un vrai LLM :
+# ollama>=0.3

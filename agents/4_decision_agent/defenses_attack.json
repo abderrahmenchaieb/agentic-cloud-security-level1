@@ -1,0 +1,507 @@
+{
+ "T1055": {
+  "attack_mitigations": [
+   {
+    "id": "M1040",
+    "name": "Behavior Prevention on Endpoint",
+    "description": "Behavior Prevention on Endpoint refers to the use of technologies and strategies to detect and block potentially malicious activities by analyzing the behavior of processes, files, API calls, and other endpoint events. Rather than relying solely on known signatures, this approach leverages heuristic"
+   },
+   {
+    "id": "M1026",
+    "name": "Privileged Account Management",
+    "description": "Privileged Account Management focuses on implementing policies, controls, and tools to securely manage privileged accounts (e.g., SYSTEM, root, or administrative accounts). This includes restricting access, limiting the scope of permissions, monitoring privileged account usage, and ensuring accounta"
+   }
+  ],
+  "d3fend_actions": []
+ },
+ "T1059.001": {
+  "attack_mitigations": [
+   {
+    "id": "M1038",
+    "name": "Execution Prevention",
+    "description": "Prevent the execution of unauthorized or malicious code on systems by implementing application control, script blocking, and other execution prevention mechanisms. This ensures that only trusted and authorized code is executed, reducing the risk of malware and unauthorized actions. This mitigation c"
+   },
+   {
+    "id": "M1045",
+    "name": "Code Signing",
+    "description": "Code Signing is a security process that ensures the authenticity and integrity of software by digitally signing executables, scripts, and other code artifacts. It prevents untrusted or malicious code from executing by verifying the digital signatures against trusted sources. Code signing protects ag"
+   },
+   {
+    "id": "M1026",
+    "name": "Privileged Account Management",
+    "description": "Privileged Account Management focuses on implementing policies, controls, and tools to securely manage privileged accounts (e.g., SYSTEM, root, or administrative accounts). This includes restricting access, limiting the scope of permissions, monitoring privileged account usage, and ensuring accounta"
+   },
+   {
+    "id": "M1049",
+    "name": "Antivirus/Antimalware",
+    "description": "Antivirus/Antimalware solutions utilize signatures, heuristics, and behavioral analysis to detect, block, and remediate malicious software, including viruses, trojans, ransomware, and spyware. These solutions continuously monitor endpoints and systems for known malicious patterns and suspicious beha"
+   },
+   {
+    "id": "M1042",
+    "name": "Disable or Remove Feature or Program",
+    "description": "Disable or remove unnecessary and potentially vulnerable software, features, or services to reduce the attack surface and prevent abuse by adversaries. This involves identifying software or features that are no longer needed or that could be exploited and ensuring they are either removed or properly"
+   }
+  ],
+  "d3fend_actions": []
+ },
+ "T1003": {
+  "attack_mitigations": [
+   {
+    "id": "M1041",
+    "name": "Encrypt Sensitive Information",
+    "description": "Protect sensitive information at rest, in transit, and during processing by using strong encryption algorithms. Encryption ensures the confidentiality and integrity of data, preventing unauthorized access or tampering. This mitigation can be implemented through the following measures:\n\nEncrypt Data "
+   },
+   {
+    "id": "M1040",
+    "name": "Behavior Prevention on Endpoint",
+    "description": "Behavior Prevention on Endpoint refers to the use of technologies and strategies to detect and block potentially malicious activities by analyzing the behavior of processes, files, API calls, and other endpoint events. Rather than relying solely on known signatures, this approach leverages heuristic"
+   },
+   {
+    "id": "M1027",
+    "name": "Password Policies",
+    "description": "Set and enforce secure password policies for accounts to reduce the likelihood of unauthorized access. Strong password policies include enforcing password complexity, requiring regular password changes, and preventing password reuse. This mitigation can be implemented through the following measures:"
+   },
+   {
+    "id": "M1017",
+    "name": "User Training",
+    "description": "User Training involves educating employees and contractors on recognizing, reporting, and preventing cyber threats that rely on human interaction, such as phishing, social engineering, and other manipulative techniques. Comprehensive training programs create a human firewall by empowering users to b"
+   },
+   {
+    "id": "M1026",
+    "name": "Privileged Account Management",
+    "description": "Privileged Account Management focuses on implementing policies, controls, and tools to securely manage privileged accounts (e.g., SYSTEM, root, or administrative accounts). This includes restricting access, limiting the scope of permissions, monitoring privileged account usage, and ensuring accounta"
+   },
+   {
+    "id": "M1025",
+    "name": "Privileged Process Integrity",
+    "description": "Privileged Process Integrity focuses on defending highly privileged processes (e.g., system services, antivirus, or authentication processes) from tampering, injection, or compromise by adversaries. These processes often interact with critical components, making them prime targets for techniques lik"
+   },
+   {
+    "id": "M1043",
+    "name": "Credential Access Protection",
+    "description": "Credential Access Protection focuses on implementing measures to prevent adversaries from obtaining credentials, such as passwords, hashes, tokens, or keys, that could be used for unauthorized access. This involves restricting access to credential storage mechanisms, hardening configurations to bloc"
+   },
+   {
+    "id": "M1015",
+    "name": "Active Directory Configuration",
+    "description": "Implement robust Active Directory (AD) configurations using group policies to secure user accounts, control access, and minimize the attack surface. AD configurations enable centralized control over account settings, logon policies, and permissions, reducing the risk of unauthorized access and later"
+   },
+   {
+    "id": "M1028",
+    "name": "Operating System Configuration",
+    "description": "Operating System Configuration involves adjusting system settings and hardening the default configurations of an operating system (OS) to mitigate adversary exploitation and prevent abuse of system functionality. Proper OS configurations address security vulnerabilities, limit attack surfaces, and e"
+   }
+  ],
+  "d3fend_actions": []
+ },
+ "T1053.005": {
+  "attack_mitigations": [
+   {
+    "id": "M1028",
+    "name": "Operating System Configuration",
+    "description": "Operating System Configuration involves adjusting system settings and hardening the default configurations of an operating system (OS) to mitigate adversary exploitation and prevent abuse of system functionality. Proper OS configurations address security vulnerabilities, limit attack surfaces, and e"
+   },
+   {
+    "id": "M1018",
+    "name": "User Account Management",
+    "description": "User Account Management involves implementing and enforcing policies for the lifecycle of user accounts, including creation, modification, and deactivation. Proper account management reduces the attack surface by limiting unauthorized access, managing account privileges, and ensuring accounts are us"
+   },
+   {
+    "id": "M1026",
+    "name": "Privileged Account Management",
+    "description": "Privileged Account Management focuses on implementing policies, controls, and tools to securely manage privileged accounts (e.g., SYSTEM, root, or administrative accounts). This includes restricting access, limiting the scope of permissions, monitoring privileged account usage, and ensuring accounta"
+   },
+   {
+    "id": "M1047",
+    "name": "Audit",
+    "description": "Auditing is the process of recording activity and systematically reviewing and analyzing the activity and system configurations. The primary purpose of auditing is to detect anomalies and identify potential threats or weaknesses in the environment. Proper auditing configurations can also help to mee"
+   }
+  ],
+  "d3fend_actions": []
+ },
+ "T1112": {
+  "attack_mitigations": [
+   {
+    "id": "M1024",
+    "name": "Restrict Registry Permissions",
+    "description": "Restricting registry permissions involves configuring access control settings for sensitive registry keys and hives to ensure that only authorized users or processes can make modifications. By limiting access, organizations can prevent unauthorized changes that adversaries might use for persistence,"
+   }
+  ],
+  "d3fend_actions": []
+ },
+ "T1027": {
+  "attack_mitigations": [
+   {
+    "id": "M1017",
+    "name": "User Training",
+    "description": "User Training involves educating employees and contractors on recognizing, reporting, and preventing cyber threats that rely on human interaction, such as phishing, social engineering, and other manipulative techniques. Comprehensive training programs create a human firewall by empowering users to b"
+   },
+   {
+    "id": "M1040",
+    "name": "Behavior Prevention on Endpoint",
+    "description": "Behavior Prevention on Endpoint refers to the use of technologies and strategies to detect and block potentially malicious activities by analyzing the behavior of processes, files, API calls, and other endpoint events. Rather than relying solely on known signatures, this approach leverages heuristic"
+   },
+   {
+    "id": "M1049",
+    "name": "Antivirus/Antimalware",
+    "description": "Antivirus/Antimalware solutions utilize signatures, heuristics, and behavioral analysis to detect, block, and remediate malicious software, including viruses, trojans, ransomware, and spyware. These solutions continuously monitor endpoints and systems for known malicious patterns and suspicious beha"
+   },
+   {
+    "id": "M1047",
+    "name": "Audit",
+    "description": "Auditing is the process of recording activity and systematically reviewing and analyzing the activity and system configurations. The primary purpose of auditing is to detect anomalies and identify potential threats or weaknesses in the environment. Proper auditing configurations can also help to mee"
+   }
+  ],
+  "d3fend_actions": []
+ },
+ "T1021.002": {
+  "attack_mitigations": [
+   {
+    "id": "M1035",
+    "name": "Limit Access to Resource Over Network",
+    "description": "Restrict access to network resources, such as file shares, remote systems, and services, to only those users, accounts, or systems with a legitimate business requirement. This can include employing technologies like network concentrators, RDP gateways, and zero-trust network access (ZTNA) models, al"
+   },
+   {
+    "id": "M1037",
+    "name": "Filter Network Traffic",
+    "description": "Employ network appliances and endpoint software to filter ingress, egress, and lateral network traffic. This includes protocol-based filtering, enforcing firewall rules, and blocking or restricting traffic based on predefined conditions to limit adversary movement and data exfiltration. This mitigat"
+   },
+   {
+    "id": "M1027",
+    "name": "Password Policies",
+    "description": "Set and enforce secure password policies for accounts to reduce the likelihood of unauthorized access. Strong password policies include enforcing password complexity, requiring regular password changes, and preventing password reuse. This mitigation can be implemented through the following measures:"
+   },
+   {
+    "id": "M1026",
+    "name": "Privileged Account Management",
+    "description": "Privileged Account Management focuses on implementing policies, controls, and tools to securely manage privileged accounts (e.g., SYSTEM, root, or administrative accounts). This includes restricting access, limiting the scope of permissions, monitoring privileged account usage, and ensuring accounta"
+   }
+  ],
+  "d3fend_actions": []
+ },
+ "T1078": {
+  "attack_mitigations": [
+   {
+    "id": "M1013",
+    "name": "Application Developer Guidance",
+    "description": "Application Developer Guidance focuses on providing developers with the knowledge, tools, and best practices needed to write secure code, reduce vulnerabilities, and implement secure design principles. By integrating security throughout the software development lifecycle (SDLC), this mitigation aims"
+   },
+   {
+    "id": "M1017",
+    "name": "User Training",
+    "description": "User Training involves educating employees and contractors on recognizing, reporting, and preventing cyber threats that rely on human interaction, such as phishing, social engineering, and other manipulative techniques. Comprehensive training programs create a human firewall by empowering users to b"
+   },
+   {
+    "id": "M1027",
+    "name": "Password Policies",
+    "description": "Set and enforce secure password policies for accounts to reduce the likelihood of unauthorized access. Strong password policies include enforcing password complexity, requiring regular password changes, and preventing password reuse. This mitigation can be implemented through the following measures:"
+   },
+   {
+    "id": "M1018",
+    "name": "User Account Management",
+    "description": "User Account Management involves implementing and enforcing policies for the lifecycle of user accounts, including creation, modification, and deactivation. Proper account management reduces the attack surface by limiting unauthorized access, managing account privileges, and ensuring accounts are us"
+   },
+   {
+    "id": "M1026",
+    "name": "Privileged Account Management",
+    "description": "Privileged Account Management focuses on implementing policies, controls, and tools to securely manage privileged accounts (e.g., SYSTEM, root, or administrative accounts). This includes restricting access, limiting the scope of permissions, monitoring privileged account usage, and ensuring accounta"
+   },
+   {
+    "id": "M1032",
+    "name": "Multi-factor Authentication",
+    "description": "Multi-Factor Authentication (MFA) enhances security by requiring users to provide at least two forms of verification to prove their identity before granting access. These factors typically include:\n\n- *Something you know*: Passwords, PINs.\n- *Something you have*: Physical tokens, smartphone authenti"
+   },
+   {
+    "id": "M1015",
+    "name": "Active Directory Configuration",
+    "description": "Implement robust Active Directory (AD) configurations using group policies to secure user accounts, control access, and minimize the attack surface. AD configurations enable centralized control over account settings, logon policies, and permissions, reducing the risk of unauthorized access and later"
+   },
+   {
+    "id": "M1036",
+    "name": "Account Use Policies",
+    "description": "Account Use Policies help mitigate unauthorized access by configuring and enforcing rules that govern how and when accounts can be used. These policies include enforcing account lockout mechanisms, restricting login times, and setting inactivity timeouts. Proper configuration of these policies reduc"
+   }
+  ],
+  "d3fend_actions": []
+ },
+ "T1105": {
+  "attack_mitigations": [
+   {
+    "id": "M1031",
+    "name": "Network Intrusion Prevention",
+    "description": "Use intrusion detection signatures to block traffic at network boundaries."
+   },
+   {
+    "id": "M1037",
+    "name": "Filter Network Traffic",
+    "description": "Employ network appliances and endpoint software to filter ingress, egress, and lateral network traffic. This includes protocol-based filtering, enforcing firewall rules, and blocking or restricting traffic based on predefined conditions to limit adversary movement and data exfiltration. This mitigat"
+   }
+  ],
+  "d3fend_actions": []
+ },
+ "T1078.004": {
+  "attack_mitigations": [
+   {
+    "id": "M1017",
+    "name": "User Training",
+    "description": "User Training involves educating employees and contractors on recognizing, reporting, and preventing cyber threats that rely on human interaction, such as phishing, social engineering, and other manipulative techniques. Comprehensive training programs create a human firewall by empowering users to b"
+   },
+   {
+    "id": "M1027",
+    "name": "Password Policies",
+    "description": "Set and enforce secure password policies for accounts to reduce the likelihood of unauthorized access. Strong password policies include enforcing password complexity, requiring regular password changes, and preventing password reuse. This mitigation can be implemented through the following measures:"
+   },
+   {
+    "id": "M1018",
+    "name": "User Account Management",
+    "description": "User Account Management involves implementing and enforcing policies for the lifecycle of user accounts, including creation, modification, and deactivation. Proper account management reduces the attack surface by limiting unauthorized access, managing account privileges, and ensuring accounts are us"
+   },
+   {
+    "id": "M1026",
+    "name": "Privileged Account Management",
+    "description": "Privileged Account Management focuses on implementing policies, controls, and tools to securely manage privileged accounts (e.g., SYSTEM, root, or administrative accounts). This includes restricting access, limiting the scope of permissions, monitoring privileged account usage, and ensuring accounta"
+   },
+   {
+    "id": "M1032",
+    "name": "Multi-factor Authentication",
+    "description": "Multi-Factor Authentication (MFA) enhances security by requiring users to provide at least two forms of verification to prove their identity before granting access. These factors typically include:\n\n- *Something you know*: Passwords, PINs.\n- *Something you have*: Physical tokens, smartphone authenti"
+   },
+   {
+    "id": "M1015",
+    "name": "Active Directory Configuration",
+    "description": "Implement robust Active Directory (AD) configurations using group policies to secure user accounts, control access, and minimize the attack surface. AD configurations enable centralized control over account settings, logon policies, and permissions, reducing the risk of unauthorized access and later"
+   },
+   {
+    "id": "M1036",
+    "name": "Account Use Policies",
+    "description": "Account Use Policies help mitigate unauthorized access by configuring and enforcing rules that govern how and when accounts can be used. These policies include enforcing account lockout mechanisms, restricting login times, and setting inactivity timeouts. Proper configuration of these policies reduc"
+   }
+  ],
+  "d3fend_actions": []
+ },
+ "T1580": {
+  "attack_mitigations": [
+   {
+    "id": "M1018",
+    "name": "User Account Management",
+    "description": "User Account Management involves implementing and enforcing policies for the lifecycle of user accounts, including creation, modification, and deactivation. Proper account management reduces the attack surface by limiting unauthorized access, managing account privileges, and ensuring accounts are us"
+   }
+  ],
+  "d3fend_actions": []
+ },
+ "T1087.004": {
+  "attack_mitigations": [
+   {
+    "id": "M1018",
+    "name": "User Account Management",
+    "description": "User Account Management involves implementing and enforcing policies for the lifecycle of user accounts, including creation, modification, and deactivation. Proper account management reduces the attack surface by limiting unauthorized access, managing account privileges, and ensuring accounts are us"
+   },
+   {
+    "id": "M1047",
+    "name": "Audit",
+    "description": "Auditing is the process of recording activity and systematically reviewing and analyzing the activity and system configurations. The primary purpose of auditing is to detect anomalies and identify potential threats or weaknesses in the environment. Proper auditing configurations can also help to mee"
+   }
+  ],
+  "d3fend_actions": []
+ },
+ "T1552.001": {
+  "attack_mitigations": [
+   {
+    "id": "M1017",
+    "name": "User Training",
+    "description": "User Training involves educating employees and contractors on recognizing, reporting, and preventing cyber threats that rely on human interaction, such as phishing, social engineering, and other manipulative techniques. Comprehensive training programs create a human firewall by empowering users to b"
+   },
+   {
+    "id": "M1027",
+    "name": "Password Policies",
+    "description": "Set and enforce secure password policies for accounts to reduce the likelihood of unauthorized access. Strong password policies include enforcing password complexity, requiring regular password changes, and preventing password reuse. This mitigation can be implemented through the following measures:"
+   },
+   {
+    "id": "M1022",
+    "name": "Restrict File and Directory Permissions",
+    "description": "Restricting file and directory permissions involves setting access controls at the file system level to limit which users, groups, or processes can read, write, or execute files. By configuring permissions appropriately, organizations can reduce the attack surface for adversaries seeking to access s"
+   },
+   {
+    "id": "M1047",
+    "name": "Audit",
+    "description": "Auditing is the process of recording activity and systematically reviewing and analyzing the activity and system configurations. The primary purpose of auditing is to detect anomalies and identify potential threats or weaknesses in the environment. Proper auditing configurations can also help to mee"
+   }
+  ],
+  "d3fend_actions": []
+ },
+ "T1552.006": {
+  "attack_mitigations": [
+   {
+    "id": "M1047",
+    "name": "Audit",
+    "description": "Auditing is the process of recording activity and systematically reviewing and analyzing the activity and system configurations. The primary purpose of auditing is to detect anomalies and identify potential threats or weaknesses in the environment. Proper auditing configurations can also help to mee"
+   },
+   {
+    "id": "M1015",
+    "name": "Active Directory Configuration",
+    "description": "Implement robust Active Directory (AD) configurations using group policies to secure user accounts, control access, and minimize the attack surface. AD configurations enable centralized control over account settings, logon policies, and permissions, reducing the risk of unauthorized access and later"
+   },
+   {
+    "id": "M1051",
+    "name": "Update Software",
+    "description": "Software updates ensure systems are protected against known vulnerabilities by applying patches and upgrades provided by vendors. Regular updates reduce the attack surface and prevent adversaries from exploiting known security gaps. This includes patching operating systems, applications, drivers, an"
+   }
+  ],
+  "d3fend_actions": []
+ },
+ "T1098.001": {
+  "attack_mitigations": [
+   {
+    "id": "M1030",
+    "name": "Network Segmentation",
+    "description": "Network segmentation involves dividing a network into smaller, isolated segments to control and limit the flow of traffic between devices, systems, and applications. By segmenting networks, organizations can reduce the attack surface, restrict lateral movement by adversaries, and protect critical as"
+   },
+   {
+    "id": "M1018",
+    "name": "User Account Management",
+    "description": "User Account Management involves implementing and enforcing policies for the lifecycle of user accounts, including creation, modification, and deactivation. Proper account management reduces the attack surface by limiting unauthorized access, managing account privileges, and ensuring accounts are us"
+   },
+   {
+    "id": "M1026",
+    "name": "Privileged Account Management",
+    "description": "Privileged Account Management focuses on implementing policies, controls, and tools to securely manage privileged accounts (e.g., SYSTEM, root, or administrative accounts). This includes restricting access, limiting the scope of permissions, monitoring privileged account usage, and ensuring accounta"
+   },
+   {
+    "id": "M1032",
+    "name": "Multi-factor Authentication",
+    "description": "Multi-Factor Authentication (MFA) enhances security by requiring users to provide at least two forms of verification to prove their identity before granting access. These factors typically include:\n\n- *Something you know*: Passwords, PINs.\n- *Something you have*: Physical tokens, smartphone authenti"
+   },
+   {
+    "id": "M1042",
+    "name": "Disable or Remove Feature or Program",
+    "description": "Disable or remove unnecessary and potentially vulnerable software, features, or services to reduce the attack surface and prevent abuse by adversaries. This involves identifying software or features that are no longer needed or that could be exploited and ensuring they are either removed or properly"
+   }
+  ],
+  "d3fend_actions": []
+ },
+ "T1098.003": {
+  "attack_mitigations": [
+   {
+    "id": "M1018",
+    "name": "User Account Management",
+    "description": "User Account Management involves implementing and enforcing policies for the lifecycle of user accounts, including creation, modification, and deactivation. Proper account management reduces the attack surface by limiting unauthorized access, managing account privileges, and ensuring accounts are us"
+   },
+   {
+    "id": "M1026",
+    "name": "Privileged Account Management",
+    "description": "Privileged Account Management focuses on implementing policies, controls, and tools to securely manage privileged accounts (e.g., SYSTEM, root, or administrative accounts). This includes restricting access, limiting the scope of permissions, monitoring privileged account usage, and ensuring accounta"
+   },
+   {
+    "id": "M1032",
+    "name": "Multi-factor Authentication",
+    "description": "Multi-Factor Authentication (MFA) enhances security by requiring users to provide at least two forms of verification to prove their identity before granting access. These factors typically include:\n\n- *Something you know*: Passwords, PINs.\n- *Something you have*: Physical tokens, smartphone authenti"
+   }
+  ],
+  "d3fend_actions": []
+ },
+ "T1136.003": {
+  "attack_mitigations": [
+   {
+    "id": "M1030",
+    "name": "Network Segmentation",
+    "description": "Network segmentation involves dividing a network into smaller, isolated segments to control and limit the flow of traffic between devices, systems, and applications. By segmenting networks, organizations can reduce the attack surface, restrict lateral movement by adversaries, and protect critical as"
+   },
+   {
+    "id": "M1026",
+    "name": "Privileged Account Management",
+    "description": "Privileged Account Management focuses on implementing policies, controls, and tools to securely manage privileged accounts (e.g., SYSTEM, root, or administrative accounts). This includes restricting access, limiting the scope of permissions, monitoring privileged account usage, and ensuring accounta"
+   },
+   {
+    "id": "M1032",
+    "name": "Multi-factor Authentication",
+    "description": "Multi-Factor Authentication (MFA) enhances security by requiring users to provide at least two forms of verification to prove their identity before granting access. These factors typically include:\n\n- *Something you know*: Passwords, PINs.\n- *Something you have*: Physical tokens, smartphone authenti"
+   }
+  ],
+  "d3fend_actions": []
+ },
+ "T1537": {
+  "attack_mitigations": [
+   {
+    "id": "M1037",
+    "name": "Filter Network Traffic",
+    "description": "Employ network appliances and endpoint software to filter ingress, egress, and lateral network traffic. This includes protocol-based filtering, enforcing firewall rules, and blocking or restricting traffic based on predefined conditions to limit adversary movement and data exfiltration. This mitigat"
+   },
+   {
+    "id": "M1057",
+    "name": "Data Loss Prevention",
+    "description": "Data Loss Prevention (DLP) involves implementing strategies and technologies to identify, categorize, monitor, and control the movement of sensitive data within an organization. This includes protecting data formats indicative of Personally Identifiable Information (PII), intellectual property, or f"
+   },
+   {
+    "id": "M1018",
+    "name": "User Account Management",
+    "description": "User Account Management involves implementing and enforcing policies for the lifecycle of user accounts, including creation, modification, and deactivation. Proper account management reduces the attack surface by limiting unauthorized access, managing account privileges, and ensuring accounts are us"
+   },
+   {
+    "id": "M1054",
+    "name": "Software Configuration",
+    "description": "Software configuration refers to making security-focused adjustments to the settings of applications, middleware, databases, or other software to mitigate potential threats. These changes help reduce the attack surface, enforce best practices, and protect sensitive data. This mitigation can be imple"
+   }
+  ],
+  "d3fend_actions": []
+ },
+ "T1578": {
+  "attack_mitigations": [
+   {
+    "id": "M1018",
+    "name": "User Account Management",
+    "description": "User Account Management involves implementing and enforcing policies for the lifecycle of user accounts, including creation, modification, and deactivation. Proper account management reduces the attack surface by limiting unauthorized access, managing account privileges, and ensuring accounts are us"
+   },
+   {
+    "id": "M1047",
+    "name": "Audit",
+    "description": "Auditing is the process of recording activity and systematically reviewing and analyzing the activity and system configurations. The primary purpose of auditing is to detect anomalies and identify potential threats or weaknesses in the environment. Proper auditing configurations can also help to mee"
+   }
+  ],
+  "d3fend_actions": []
+ },
+ "T1548": {
+  "attack_mitigations": [
+   {
+    "id": "M1052",
+    "name": "User Account Control",
+    "description": "User Account Control (UAC) is a security feature in Microsoft Windows that prevents unauthorized changes to the operating system. UAC prompts users to confirm or provide administrator credentials when an action requires elevated privileges. Proper configuration of UAC reduces the risk of privilege e"
+   },
+   {
+    "id": "M1028",
+    "name": "Operating System Configuration",
+    "description": "Operating System Configuration involves adjusting system settings and hardening the default configurations of an operating system (OS) to mitigate adversary exploitation and prevent abuse of system functionality. Proper OS configurations address security vulnerabilities, limit attack surfaces, and e"
+   },
+   {
+    "id": "M1038",
+    "name": "Execution Prevention",
+    "description": "Prevent the execution of unauthorized or malicious code on systems by implementing application control, script blocking, and other execution prevention mechanisms. This ensures that only trusted and authorized code is executed, reducing the risk of malware and unauthorized actions. This mitigation c"
+   },
+   {
+    "id": "M1018",
+    "name": "User Account Management",
+    "description": "User Account Management involves implementing and enforcing policies for the lifecycle of user accounts, including creation, modification, and deactivation. Proper account management reduces the attack surface by limiting unauthorized access, managing account privileges, and ensuring accounts are us"
+   },
+   {
+    "id": "M1022",
+    "name": "Restrict File and Directory Permissions",
+    "description": "Restricting file and directory permissions involves setting access controls at the file system level to limit which users, groups, or processes can read, write, or execute files. By configuring permissions appropriately, organizations can reduce the attack surface for adversaries seeking to access s"
+   },
+   {
+    "id": "M1026",
+    "name": "Privileged Account Management",
+    "description": "Privileged Account Management focuses on implementing policies, controls, and tools to securely manage privileged accounts (e.g., SYSTEM, root, or administrative accounts). This includes restricting access, limiting the scope of permissions, monitoring privileged account usage, and ensuring accounta"
+   },
+   {
+    "id": "M1047",
+    "name": "Audit",
+    "description": "Auditing is the process of recording activity and systematically reviewing and analyzing the activity and system configurations. The primary purpose of auditing is to detect anomalies and identify potential threats or weaknesses in the environment. Proper auditing configurations can also help to mee"
+   },
+   {
+    "id": "M1051",
+    "name": "Update Software",
+    "description": "Software updates ensure systems are protected against known vulnerabilities by applying patches and upgrades provided by vendors. Regular updates reduce the attack surface and prevent adversaries from exploiting known security gaps. This includes patching operating systems, applications, drivers, an"
+   }
+  ],
+  "d3fend_actions": []
+ }
+}
