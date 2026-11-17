@@ -1,0 +1,174 @@
+# =============================================================================
+# ORCHESTRATION — Agentic System for Cloud Security and Geolocation (Niveau 1)
+# =============================================================================
+# 6 conteneurs : bus+dashboard, 4 agents, ollama.
+#
+# CONSTRUCTION — l'image de base doit être bâtie EN PREMIER (les agents en
+# héritent, elle porte scikit-learn et PyTorch) :
+#     docker build -f docker/Dockerfile.base -t agentic-base:latest .
+#     docker compose -f docker/docker-compose.yml up -d
+#
+# Le dashboard est ensuite sur http://localhost:8000/
+#
+# ⚠️ LES SONDES TOURNENT HORS CONTENEUR
+#    Sysmon est un pilote noyau Windows et la capture réseau exige l'accès aux
+#    interfaces de l'hôte : ni l'un ni l'autre ne se conteneurise. Les sondes
+#    s'installent NATIVEMENT sur les machines surveillées et poussent vers les
+#    ports exposés ci-dessous — c'est l'architecture normale d'un EDR : un
+#    agent léger sur chaque poste, un backend centralisé.
+#
+#        services/sonde_windows.py  → machine Windows surveillée
+#        services/sonde_cloud.py    → instance cible du Traffic Mirroring AWS
+#
+# ⚠️ ORDRE DE DÉMARRAGE
+#    `depends_on: condition: service_healthy` attend que le bus RÉPONDE, pas
+#    seulement que son conteneur existe. C'est nécessaire : les agents
+#    agentiques s'enregistrent auprès du bus dès leur construction. Ils savent
+#    néanmoins patienter puis basculer en mode dégradé — le système ne se
+#    bloque pas si le bus tarde.
+# =============================================================================
+
+name: agentic-security
+
+services:
+
+  # ---------------------------------------------------------------------------
+  bus:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.bus
+    image: agentic-bus:latest
+    container_name: agentic-bus
+    ports:
+      - "8000:8000"          # dashboard + API + WebSocket
+    environment:
+      # ⚠️ Valeur par défaut pointant vers le montage : le bus trouve la base
+      #    dès qu'un .mmdb est déposé dans geo/, sans dépendre d'un fichier
+      #    .env — dont l'emplacement (docker/ et non la racine) est une source
+      #    d'erreur classique. Sans base, le géolocalisateur bascule sur son
+      #    mode approximatif, qui ne connaît que quelques plages publiques.
+      GEO_MMDB_PATH: ${GEO_MMDB_PATH:-/app/geo/dbip.mmdb}
+    volumes:
+      - ../geo:/app/geo:ro   # dépôt facultatif d'une base .mmdb
+    networks: [agentic]
+    restart: unless-stopped
+
+  # ---------------------------------------------------------------------------
+  collect:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.collect
+    image: agentic-collect:latest
+    container_name: agentic-collect
+    ports:
+      - "9001:9001"          # exposé : les sondes y poussent les logs
+    environment:
+      BUS_URL: http://bus:8000
+      AGENT_URL: http://collect:9001
+      ANALYSIS_URL: http://analysis:9002
+      REPLAY_MODE: ${REPLAY_MODE:-0}   # 1 pour rejouer un corpus historique
+    volumes:
+      - ../models:/app/models:ro
+    depends_on:
+      bus:
+        condition: service_healthy
+    networks: [agentic]
+    restart: unless-stopped
+
+  # ---------------------------------------------------------------------------
+  analysis:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.analysis
+    image: agentic-analysis:latest
+    container_name: agentic-analysis
+    ports:
+      - "9002:9002"          # exposé pour le diagnostic (/health, /stats)
+    environment:
+      BUS_URL: http://bus:8000
+      AGENT_URL: http://analysis:9002
+      DECISION_URL: http://decision:9004
+      OLLAMA_URL: http://ollama:11434
+      OLLAMA_MODEL: ${OLLAMA_MODEL:-llama3.1}
+      ENABLE_LLM: ${ENABLE_LLM:-1}
+    volumes:
+      - ../models:/app/models:ro
+    depends_on:
+      bus:
+        condition: service_healthy
+    networks: [agentic]
+    restart: unless-stopped
+
+  # ---------------------------------------------------------------------------
+  anonymization:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.anonymization
+    image: agentic-anonymization:latest
+    container_name: agentic-anonymization
+    ports:
+      - "9003:9003"          # exposé : les sondes y poussent les flux réseau
+    environment:
+      BUS_URL: http://bus:8000
+      AGENT_URL: http://anonymization:9003
+      DECISION_URL: http://decision:9004
+      ENABLE_ANOMALE: ${ENABLE_ANOMALE:-1}
+    volumes:
+      - ../models:/app/models:ro
+    depends_on:
+      bus:
+        condition: service_healthy
+    networks: [agentic]
+    restart: unless-stopped
+
+  # ---------------------------------------------------------------------------
+  decision:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.decision
+    image: agentic-decision:latest
+    container_name: agentic-decision
+    ports:
+      - "9004:9004"          # exposé : consultation des messages Niveau 2
+    environment:
+      BUS_URL: http://bus:8000
+      AGENT_URL: http://decision:9004
+      OLLAMA_URL: http://ollama:11434
+      OLLAMA_MODEL: ${OLLAMA_MODEL:-llama3.1}
+      ENABLE_LLM: ${ENABLE_LLM:-1}
+      # manual | auto_immediate_only | autonomous
+      ACTION_POLICY: ${ACTION_POLICY:-manual}
+      DECIDE_INTERVAL: ${DECIDE_INTERVAL:-10}
+    volumes:
+      - ../models:/app/models:ro
+      - ../agents/4_decision_agent/defenses_attack.json:/app/agents/4_decision_agent/defenses_attack.json:ro
+    depends_on:
+      bus:
+        condition: service_healthy
+    networks: [agentic]
+    restart: unless-stopped
+
+  # ---------------------------------------------------------------------------
+  ollama:
+    image: ollama/ollama:latest
+    container_name: agentic-ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama-models:/root/.ollama   # évite de retélécharger le modèle
+    networks: [agentic]
+    restart: unless-stopped
+    # ⚠️ Un modèle 8B occupe ~8 Go de RAM. Sur une machine juste, réduire
+    #    cette limite et choisir un modèle plus léger (phi3, mistral:7b-q4),
+    #    ou désactiver le LLM (ENABLE_LLM=0) : la détection n'en dépend pas.
+    deploy:
+      resources:
+        limits:
+          memory: ${OLLAMA_MEMORY:-8g}
+
+networks:
+  agentic:
+    driver: bridge
+
+volumes:
+  ollama-models:

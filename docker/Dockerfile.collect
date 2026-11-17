@@ -1,0 +1,28 @@
+# =============================================================================
+# CONTENEUR — AGENT COLLECT (intégrité des logs)
+# =============================================================================
+# Modèles chargés : autoencodeurs d'intégrité Windows et cloud.
+# Reçoit les logs bruts des sondes sur /ingest, transmet à Analysis.
+# =============================================================================
+FROM agentic-base:latest
+
+COPY agents/1_collect_agent/  /app/agents/1_collect_agent/
+# ⚠️ `cloud_adapter` importe `analysis_agent.sequence_schema` (les Event du
+#    séquenceur cloud y sont définis). Sans ce paquet, l'import échoue et
+#    TOUS les événements CloudTrail sont rejetés — la voie cloud devient
+#    silencieusement inopérante.
+COPY agents/2_analysis_agent/ /app/agents/2_analysis_agent/
+COPY agentic_layer/           /app/agentic_layer/
+COPY cloud_adapter/           /app/cloud_adapter/
+COPY services/service_collect.py /app/services/
+COPY model_loader.py          /app/
+
+ENV PYTHONPATH=/app:/app/agents/1_collect_agent:/app/agents/2_analysis_agent:/app/agentic_layer:/app/cloud_adapter \
+    PORT=9001 \
+    MODELS_DIR=/app/models
+EXPOSE 9001
+
+HEALTHCHECK --interval=15s --timeout=5s --start-period=90s --retries=3 \
+    CMD curl -fs http://localhost:9001/health || exit 1
+
+CMD ["python", "/app/services/service_collect.py"]

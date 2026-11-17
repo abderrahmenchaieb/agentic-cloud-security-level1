@@ -1,0 +1,15 @@
+# Versions used for inference and the experiments (Python 3.12, CPU).
+# scikit-learn is pinned to the version the random forests were trained with.
+--extra-index-url https://download.pytorch.org/whl/cpu
+numpy==1.26.4
+scikit-learn==1.6.1
+joblib==1.4.2
+torch==2.4.1+cpu
+pandas>=2.0
+networkx>=3.0
+pydantic==2.9.2
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+websockets==13.1
+# Optional: real language model for the interpreter and action generator
+# ollama>=0.3

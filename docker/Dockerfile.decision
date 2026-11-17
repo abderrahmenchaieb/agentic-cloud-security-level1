@@ -1,0 +1,26 @@
+# =============================================================================
+# CONTENEUR — AGENT DECISION (corrélation, certitude, routage)
+# =============================================================================
+# Pas de modèle appris : cœur en règles auditables, seuils calibrés.
+# Base défensive : 268 mitigations MITRE ATT&CK.
+#
+# ⚠️ ACTION_POLICY vaut `manual` par défaut : le système décide et escalade,
+#    mais n'exécute rien sans validation humaine. Isoler une machine de
+#    production sur un faux positif coûte plus cher que l'attaque évitée.
+# =============================================================================
+FROM agentic-base:latest
+
+COPY agents/4_decision_agent/ /app/agents/4_decision_agent/
+COPY agentic_layer/           /app/agentic_layer/
+COPY services/service_decision.py /app/services/
+
+ENV PYTHONPATH=/app:/app/agents/4_decision_agent:/app/agentic_layer \
+    PORT=9004 \
+    MODELS_DIR=/app/models \
+    ACTION_POLICY=manual
+EXPOSE 9004
+
+HEALTHCHECK --interval=15s --timeout=5s --start-period=90s --retries=3 \
+    CMD curl -fs http://localhost:9004/health || exit 1
+
+CMD ["python", "/app/services/service_decision.py"]

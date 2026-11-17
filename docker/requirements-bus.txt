@@ -1,0 +1,11 @@
+# Bus réseau + dashboard. Volontairement SANS torch ni scikit-learn :
+# ce conteneur ne charge aucun modèle, l'alourdir n'aurait aucun intérêt.
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+websockets==13.1
+pydantic==2.9.2
+
+# Lecture des bases .mmdb (MaxMind GeoLite2 / DB-IP Lite) pour géolocaliser
+# les IP anonymisées. Sans cette librairie, le bus se rabat sur son mode
+# approximatif, qui ne connaît que quelques plages publiques.
+geoip2==4.8.0

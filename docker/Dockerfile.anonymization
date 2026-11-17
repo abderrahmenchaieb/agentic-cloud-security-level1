@@ -1,0 +1,25 @@
+# =============================================================================
+# CONTENEUR — AGENT ANONYMIZATION (détection VPN/Tor)
+# =============================================================================
+# Cascade : lookup → E-GraphSAGE (décideur) → Anomal-E (filet).
+#
+# ⚠️ E-GraphSAGE exige 76 features d'arête (CIC-Darknet2020/CICFlowMeter),
+#    donc une source PCAP. Sur logs seuls, le service le détecte au démarrage
+#    et se limite au lookup — voir services/sonde_windows.py et sonde_cloud.py.
+# =============================================================================
+FROM agentic-base:latest
+
+COPY agents/3_anonymization_detection_agent/ /app/agents/3_anonymization_detection_agent/
+COPY agentic_layer/           /app/agentic_layer/
+COPY services/service_anonymization.py services/lookup_feed.py /app/services/
+COPY model_loader.py          /app/
+
+ENV PYTHONPATH=/app:/app/services:/app/agents/3_anonymization_detection_agent:/app/agentic_layer \
+    PORT=9003 \
+    MODELS_DIR=/app/models
+EXPOSE 9003
+
+HEALTHCHECK --interval=15s --timeout=5s --start-period=90s --retries=3 \
+    CMD curl -fs http://localhost:9003/health || exit 1
+
+CMD ["python", "/app/services/service_anonymization.py"]

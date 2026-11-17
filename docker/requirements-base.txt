@@ -1,0 +1,11 @@
+# Dépendances communes à tous les agents.
+#
+# ⚠️ scikit-learn est ÉPINGLÉ à la version d'entraînement des modèles.
+#    Les RandomForest ont été entraînés sur Kaggle avec scikit-learn 1.6.1.
+#    Les charger sous une autre version déclenche InconsistentVersionWarning
+#    et peut produire des résultats invalides — sans erreur visible.
+#    Ne changer cette version qu'en ré-entraînant les modèles.
+scikit-learn==1.6.1
+numpy==1.26.4
+joblib==1.4.2
+pydantic==2.9.2

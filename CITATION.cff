@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the companion paper."
+title: "Agentic cloud security, Level 1: code and data for reproduction"
+authors:
+  - family-names: "AUTHOR"
+    given-names: "TO COMPLETE"
+version: "1.0.0"
+license: MIT
+# doi: 10.5281/zenodo.XXXXXXX   (added once the Zenodo record exists)

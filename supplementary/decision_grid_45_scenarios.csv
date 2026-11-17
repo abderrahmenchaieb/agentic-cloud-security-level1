@@ -1,0 +1,46 @@
+scenario,threat_level,threat_score,anonymization_level,anonymization_score,integrity_level,integrity_score,expected_certainty,expected_escalation,expected_mission
+1,none,0.0,absent,,absent,,normal,no,none
+2,none,0.0,absent,,weak,0.35,normal,no,none
+3,none,0.0,absent,,strong,0.85,monitored,no,none
+4,none,0.0,weak,0.45,absent,,normal,no,none
+5,none,0.0,weak,0.45,weak,0.35,normal,no,none
+6,none,0.0,weak,0.45,strong,0.85,monitored,no,none
+7,none,0.0,strong,0.88,absent,,normal,no,none
+8,none,0.0,strong,0.88,weak,0.35,normal,no,none
+9,none,0.0,strong,0.88,strong,0.85,monitored,no,none
+10,very low,0.15,absent,,absent,,doubtful,no,none
+11,very low,0.15,absent,,weak,0.35,doubtful,no,none
+12,very low,0.15,absent,,strong,0.85,doubtful,no,none
+13,very low,0.15,weak,0.45,absent,,doubtful,no,none
+14,very low,0.15,weak,0.45,weak,0.35,doubtful,no,none
+15,very low,0.15,weak,0.45,strong,0.85,doubtful,no,none
+16,very low,0.15,strong,0.88,absent,,doubtful,no,none
+17,very low,0.15,strong,0.88,weak,0.35,doubtful,no,none
+18,very low,0.15,strong,0.88,strong,0.85,doubtful,no,none
+19,moderate,0.45,absent,,absent,,doubtful,yes,investigation
+20,moderate,0.45,absent,,weak,0.35,doubtful,yes,investigation
+21,moderate,0.45,absent,,strong,0.85,doubtful,yes,investigation
+22,moderate,0.45,weak,0.45,absent,,doubtful,yes,investigation
+23,moderate,0.45,weak,0.45,weak,0.35,doubtful,yes,investigation
+24,moderate,0.45,weak,0.45,strong,0.85,doubtful,yes,investigation
+25,moderate,0.45,strong,0.88,absent,,doubtful,yes,geolocation and investigation
+26,moderate,0.45,strong,0.88,weak,0.35,doubtful,yes,geolocation and investigation
+27,moderate,0.45,strong,0.88,strong,0.85,doubtful,yes,geolocation and investigation
+28,high,0.72,absent,,absent,,doubtful,yes,investigation
+29,high,0.72,absent,,weak,0.35,doubtful,yes,investigation
+30,high,0.72,absent,,strong,0.85,confirmed,no,none
+31,high,0.72,weak,0.45,absent,,doubtful,yes,investigation
+32,high,0.72,weak,0.45,weak,0.35,doubtful,yes,investigation
+33,high,0.72,weak,0.45,strong,0.85,confirmed,no,none
+34,high,0.72,strong,0.88,absent,,doubtful,yes,geolocation and investigation
+35,high,0.72,strong,0.88,weak,0.35,doubtful,yes,geolocation and investigation
+36,high,0.72,strong,0.88,strong,0.85,confirmed,yes,geolocation
+37,very high,0.92,absent,,absent,,confirmed,no,none
+38,very high,0.92,absent,,weak,0.35,confirmed,no,none
+39,very high,0.92,absent,,strong,0.85,confirmed,no,none
+40,very high,0.92,weak,0.45,absent,,confirmed,no,none
+41,very high,0.92,weak,0.45,weak,0.35,confirmed,no,none
+42,very high,0.92,weak,0.45,strong,0.85,confirmed,no,none
+43,very high,0.92,strong,0.88,absent,,confirmed,yes,geolocation
+44,very high,0.92,strong,0.88,weak,0.35,confirmed,yes,geolocation
+45,very high,0.92,strong,0.88,strong,0.85,confirmed,yes,geolocation

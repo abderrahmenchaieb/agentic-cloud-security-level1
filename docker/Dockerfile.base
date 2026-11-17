@@ -1,0 +1,35 @@
+# =============================================================================
+# IMAGE DE BASE — socle commun aux agents porteurs de modèles
+# =============================================================================
+# Mutualise les couches lourdes (scikit-learn, PyTorch) entre collect,
+# analysis, anonymization et decision. Sans ce socle, chaque agent
+# retéléchargerait PyTorch : quatre fois ~200 Mo, et quatre fois le temps de
+# construction.
+#
+# Construire EN PREMIER :
+#     docker build -f docker/Dockerfile.base -t agentic-base:latest .
+# =============================================================================
+FROM python:3.11-slim
+
+# curl : sondes de santé de docker-compose
+RUN apt-get update && apt-get install -y --no-install-recommends curl \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+# Couche de dépendances séparée du code : modifier un fichier .py ne
+# provoque pas la réinstallation des paquets.
+COPY docker/requirements-base.txt docker/requirements-torch.txt /tmp/
+RUN pip install --no-cache-dir -r /tmp/requirements-base.txt \
+    && pip install --no-cache-dir -r /tmp/requirements-torch.txt \
+    && rm /tmp/requirements-*.txt
+
+# Vérification à la construction : mieux vaut échouer ici qu'à l'exécution
+RUN python -c "import sklearn, torch; \
+    assert sklearn.__version__ == '1.6.1', \
+    f'scikit-learn {sklearn.__version__} != 1.6.1 (version d\'entraînement)'; \
+    print(f'socle OK — scikit-learn {sklearn.__version__}, torch {torch.__version__}')"
+
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    SYSTEM_ROOT=/app

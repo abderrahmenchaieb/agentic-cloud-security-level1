@@ -1,0 +1,25 @@
+# =============================================================================
+# CONTENEUR — AGENT ANALYSIS (détection de menace)
+# =============================================================================
+# Modèles : détecteurs Windows (18 features) et cloud (17 features).
+# Interpréteur MITRE via Ollama — optionnel : sans lui, la détection reste
+# pleinement fonctionnelle, seule la formulation en langage naturel manque.
+# =============================================================================
+FROM agentic-base:latest
+
+COPY agents/1_collect_agent/  /app/agents/1_collect_agent/
+COPY agents/2_analysis_agent/ /app/agents/2_analysis_agent/
+COPY agentic_layer/           /app/agentic_layer/
+COPY cloud_adapter/           /app/cloud_adapter/
+COPY services/service_analysis.py /app/services/
+COPY model_loader.py          /app/
+
+ENV PYTHONPATH=/app:/app/agents/1_collect_agent:/app/agents/2_analysis_agent:/app/agentic_layer:/app/cloud_adapter \
+    PORT=9002 \
+    MODELS_DIR=/app/models
+EXPOSE 9002
+
+HEALTHCHECK --interval=15s --timeout=5s --start-period=90s --retries=3 \
+    CMD curl -fs http://localhost:9002/health || exit 1
+
+CMD ["python", "/app/services/service_analysis.py"]

@@ -1,0 +1,5 @@
+# PyTorch — requis uniquement par les agents porteurs de modèles neuronaux :
+#   collect (autoencodeurs), anonymization (E-GraphSAGE, Anomal-E).
+# Version CPU : ~200 Mo au lieu de ~2,5 Go pour la variante CUDA, inutile ici.
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.4.1+cpu
